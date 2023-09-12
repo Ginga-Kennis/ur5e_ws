@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://wiki.ros.org/xacro" name="gripper_base">
+
+  <xacro:include filename="$(find flange)/urdf/gripper_base_macro.xacro"/>
+  <xacro:gripper_base prefix="" />
+
+  <link name="world"/>
+  <joint name="world_joint" type="fixed">
+    <parent link="world"/>
+    <child link="gripper_base"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+  </joint>
+  
+</robot>
