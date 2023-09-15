@@ -9,13 +9,11 @@
     <arg name="safety_pos_margin" default="0.15" doc="The lower/upper limits in the safety controller" />
     <arg name="safety_k_position" default="20" doc="Used to set k position in the safety controller" />
 
-    <!-- <param name="robot_description" command="$(find xacro)/xacro '$(find ur_description)/urdf/ur5e.xacro'
+    <param name="robot_description" command="$(find xacro)/xacro '$(find ur_description)/urdf/ur5e_real.xacro'
       kinematics_params:=$(arg kinematics_params)
       transmission_hw_interface:=$(arg transmission_hw_interface)
       safety_limits:=$(arg safety_limits)
       safety_pos_margin:=$(arg safety_pos_margin)
       safety_k_position:=$(arg safety_k_position)"
-      /> -->
-
-      <param name="robot_description" textfile="$(find ur_description)/urdf/ur5e_robot.urdf"/>
+      />
 </launch>

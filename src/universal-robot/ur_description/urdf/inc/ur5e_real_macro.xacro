@@ -1,0 +1,102 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://wiki.ros.org/xacro">
+  <!--
+    Convenience wrapper for the 'ur_robot' macro which provides default values
+    for the various "parameters files" parameters for a UR5e.
+
+    This file can be used when composing a more complex scene with one or more
+    UR5e robots.
+
+    While the generic 'ur_robot' macro could also be used, it would require
+    the user to provide values for all parameters, as that macro does not set
+    any model-specific defaults (not even for the generic parameters, such as
+    the visual and physical parameters and joint limits).
+
+    Refer to the main 'ur_macro.xacro' in this package for information about
+    use, contributors and limitations.
+
+    NOTE: users will most likely want to override *at least* the
+          'kinematics_parameters_file' parameter. Otherwise, a default kinematic
+          model will be used, which will almost certainly not correspond to any
+          real robot.
+  -->
+  <xacro:macro name="ur5e" params="
+   prefix
+   kinematics_parameters_file:='$(find ur_description)/config/ur5e/default_kinematics.yaml'
+   transmission_hw_interface:=hardware_interface/PositionJointInterface
+   safety_limits:=false
+   safety_pos_margin:=0.15
+   safety_k_position:=20"
+  >
+    
+    <!-- always same for ur5e -->
+    <xacro:arg name="joint_limit_params" default="$(find ur_description)/config/ur5e/joint_limits.yaml"/>
+    <xacro:arg name="physical_params" default="$(find ur_description)/config/ur5e/physical_parameters.yaml"/>
+    <xacro:arg name="visual_params" default="$(find ur_description)/config/ur5e/visual_parameters.yaml"/>
+
+    <xacro:include filename="$(find ur_description)/urdf/inc/ur_macro.xacro"/>
+    <xacro:ur_robot
+      prefix="${prefix}"
+      joint_limits_parameters_file="$(arg joint_limit_params)"
+      kinematics_parameters_file="${kinematics_parameters_file}"
+      physical_parameters_file="$(arg physical_params)"
+      visual_parameters_file="$(arg visual_params)"
+      transmission_hw_interface="${transmission_hw_interface}"
+      safety_limits="${safety_limits}"
+      safety_pos_margin="${safety_pos_margin}"
+      safety_k_position="${safety_k_position}"
+    />
+
+    <!-- CUSTOM EEFs -->
+
+    <!-- flange -->
+    <xacro:include filename="$(find flange)/urdf/flange_macro.xacro"/>
+    <xacro:flange prefix="" />
+
+    <joint name="wrist_3_link-flange" type="fixed">
+      <parent link="${prefix}wrist_3_link"/>
+      <child link="flange"/>
+      <origin xyz="0 0 0" rpy="1.57 0 0"/>
+    </joint>
+
+    <!-- gripper base -->
+    <xacro:include filename="$(find flange)/urdf/gripper_base_macro.xacro"/>
+    <xacro:gripper_base prefix="" />
+
+    <joint name="flange-gripper_base" type="fixed">
+      <parent link="flange"/>
+      <child link="gripper_base"/>
+      <origin xyz="0 0.003 0" rpy="0 0 1.57"/>
+    </joint>
+
+    <!-- gripper  -->
+    <xacro:include filename="$(find robotiq_2f_140_gripper_visualization)/urdf/robotiq_arg2f_140_real_macro.xacro" />
+    <xacro:arg name="transmission_hw_interface" default="hardware_interface/EffortJointInterface"/>
+    <xacro:robotiq_arg2f_140 prefix="" transmission_hw_interface="$(arg transmission_hw_interface)"/>
+
+    <joint name="gripper_top-gripper" type="fixed">
+      <parent link="gripper_top"/>
+      <child link="${prefix}robotiq_arg2f_base_link"/>
+      <origin xyz="0 0.003 0" rpy="0 1.57 0"/>
+    </joint>
+
+    <link name="gripper_tcp" />
+    <joint name="wrist_3-gripper_tcp" type="fixed">
+      <parent link="${prefix}wrist_3_link" />
+      <child link="gripper_tcp" />
+      <origin xyz="0 0 0.2" rpy="0 0 0" />
+    </joint>
+
+    <!-- camera -->
+    <xacro:include filename="$(find realsense2_description)/urdf/_d415.urdf.xacro" />
+    <xacro:sensor_d415 parent="flange_left_bolt">
+      <origin xyz="0.0225 0.01 -0.0119" rpy="0 0 1.57" />
+    </xacro:sensor_d415>
+
+    <!-- <xacro:include filename="$(find realsense2_description)/urdf/_d435.urdf.xacro" />
+    <xacro:sensor_d435 name="camera" topics_ns="camera" parent="flange_left_bolt" publish_pointcloud="true">
+      <origin xyz="0.0225 0.01 -0.0125" rpy="0 0 1.57" />
+    </xacro:sensor_d435> -->
+    
+  </xacro:macro>
+</robot>

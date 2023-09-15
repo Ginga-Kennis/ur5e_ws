@@ -52,7 +52,7 @@
       NOTE: this imports the '_macro.xacro' from ur_description, as that contains
       the definitions for the real robot.
     -->
-  <xacro:include filename="$(find ur_description)/urdf/inc/ur5e_macro.xacro"/>
+  <xacro:include filename="$(find ur_description)/urdf/inc/ur5e_sim_macro.xacro"/>
 
 
     <!-- Instantiate model for the REAL robot. -->
