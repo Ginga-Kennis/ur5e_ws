@@ -18,7 +18,7 @@
   - rosrun robotiq_2f_gripper_control Robotiq2FGripperSimpleController.py
   - rosrun robotiq_2f_gripper_control Robotiq2FGripperStatusListener.py
 - realsense camera
-  - roslaunch realsense2_camera rs_camera.launch
+  - roslaunch realsense2_camera rs_rgbd.launch
   
 ## RUN SIMULATION
 - roslaunch ur5e_control ur5e_sim_moveit.launch
