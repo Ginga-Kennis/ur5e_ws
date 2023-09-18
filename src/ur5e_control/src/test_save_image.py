@@ -14,7 +14,7 @@ bridge = CvBridge()
 
 def image_callback(msg):
     print("Received an image!")
-    path = '/home/ginga/catkin_ws/src/ur5e_control/img'
+    path = '/home/tunamayo/ur5e_ws/src/ur5e_control/img'
     try:
         # Convert your ROS Image message to OpenCV2
         cv2_img = bridge.imgmsg_to_cv2(msg, "bgr8")
@@ -37,3 +37,4 @@ def main():
 
 if __name__ == '__main__':
     main()       
+
