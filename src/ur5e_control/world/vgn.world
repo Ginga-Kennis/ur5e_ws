@@ -308,15 +308,15 @@
       </link>
     </model>
     <state world_name='default'>
-      <sim_time>1104 906000000</sim_time>
-      <real_time>156 224226344</real_time>
-      <wall_time>1705470496 30360222</wall_time>
-      <iterations>155746</iterations>
+      <sim_time>1250 38000000</sim_time>
+      <real_time>83 121992234</real_time>
+      <wall_time>1705639760 952418231</wall_time>
+      <iterations>82591</iterations>
       <model name='3m_high_tack_spray_adhesive'>
-        <pose>0.142826 0.457032 0.072772 -0.020127 0.032811 -0.000538</pose>
+        <pose>0.142827 0.457032 0.072782 -0.020126 0.032815 -0.000544</pose>
         <scale>1 1 1</scale>
         <link name='link'>
-          <pose>0.142826 0.457032 0.072772 -0.020127 0.032811 -0.000538</pose>
+          <pose>0.142827 0.457032 0.072782 -0.020126 0.032815 -0.000544</pose>
           <velocity>0 0 0 0 -0 0</velocity>
           <acceleration>0 0 -9.8 0 -0 0</acceleration>
           <wrench>0 0 -6.47998 0 -0 0</wrench>
@@ -333,30 +333,30 @@
         </link>
       </model>
       <model name='pudding_box'>
-        <pose>0.051748 0.451832 0.035993 0.003942 -0.0106 0.001894</pose>
+        <pose>0.051771 0.451656 0.035953 0.003817 -0.012748 0.435668</pose>
         <scale>1 1 1</scale>
         <link name='link'>
-          <pose>0.051748 0.451832 0.035993 0.003942 -0.0106 0.001894</pose>
+          <pose>0.051771 0.451656 0.035953 0.003817 -0.012748 0.435668</pose>
           <velocity>0 0 0 0 -0 0</velocity>
           <acceleration>0 0 -9.8 0 -0 0</acceleration>
           <wrench>0 0 -2.38696 0 -0 0</wrench>
         </link>
       </model>
       <model name='pudding_box_0'>
-        <pose>0.165943 0.546838 0.03596 0.00407 -0.012703 -1.28214</pose>
+        <pose>0.165943 0.546839 0.035956 0.004046 -0.012732 -1.28214</pose>
         <scale>1 1 1</scale>
         <link name='link'>
-          <pose>0.165943 0.546838 0.03596 0.00407 -0.012703 -1.28214</pose>
+          <pose>0.165943 0.546839 0.035956 0.004046 -0.012732 -1.28214</pose>
           <velocity>0 0 0 0 -0 0</velocity>
           <acceleration>0 0 -9.8 0 -0 0</acceleration>
           <wrench>0 0 -2.38696 0 -0 0</wrench>
         </link>
       </model>
       <model name='wooden_block'>
-        <pose>0.032449 0.560604 0.06701 -0.051499 -0.044808 -0.000169</pose>
+        <pose>0.036828 0.563976 0.066593 -0.101908 0.020704 6e-05</pose>
         <scale>1 1 1</scale>
         <link name='link'>
-          <pose>0.032449 0.560604 0.06701 -0.051499 -0.044808 -0.000169</pose>
+          <pose>0.036828 0.563976 0.066593 -0.101908 0.020704 6e-05</pose>
           <velocity>0 0 0 0 -0 0</velocity>
           <acceleration>0 0 -9.8 0 -0 0</acceleration>
           <wrench>0 0 -10.6714 0 -0 0</wrench>
@@ -368,7 +368,7 @@
     </state>
     <gui fullscreen='0'>
       <camera name='user_camera'>
-        <pose>2.56253 2.03089 2.35132 -0 0.559644 -2.46299</pose>
+        <pose>1.04766 1.41583 1.23913 0 0.493796 -2.23904</pose>
         <view_controller>orbit</view_controller>
         <projection_type>perspective</projection_type>
       </camera>
